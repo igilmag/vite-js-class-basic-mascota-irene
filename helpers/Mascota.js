@@ -10,16 +10,16 @@ export class Mascota {
 
   /**
    * método constructor donde cargo mascota
-   * @param {MascotaLike: object} Mascota
+   * @param {Like<Mascota>} Mascota
    * @param {string} Mascota.type
-   * @param {string} Mascota.name
+   * @param {string} Mascota.nombre
    * @param {string} Mascota.microchip
    * @param {number} Mascota.edad
    * @param {string} Mascota.id
    */
 
   constructor ({
-    name = 'Desconocido',
+    nombre = 'Desconocido',
     type = 'Cánido',
     microchip = '',
     age = 0,
@@ -28,25 +28,25 @@ export class Mascota {
   }) {
     this.#id = id
     this.tipo = type
-    this.nombre = name
+    this.nombre = nombre
     this.age = age
     this.sexo = sexo
     this.microchip = microchip
   }
-  // metodos setName y setAge. La parte del else throw no es obligatoria. Este es alternativo al siguiente set name
-  //setNombre (name) {
-  //if (typeof name === 'string' && name.length) this.nombre = name
-  //else throw new Error(`formato no válido ${name}`)
+  // metodos setName y setAge. La parte del else throw no es obligatoria. Este es alternativo al siguiente set nombre
+  //setNombre (nombre) {
+  //if (typeof nombre === 'string' && nombre.length) this.nombre = nombre
+  //else throw new Error(`formato no válido ${nombre}`)
   //}
 
 
   /**
    * Función que permite meter el nombre de una mascota
-   * @param {string} name Nombre de la mascota
+   * @param {string} nombre Nombre de la mascota
    */
-  setNombre (name) {
-    if (typeof name === 'string' && name.length) this.nombre = name
-    else throw new Error(`Formato no válido ${name}`)
+  setNombre (nombre) {
+    if (typeof nombre === 'string' && nombre.length) this.nombre = nombre
+    else throw new Error(`Formato no válido ${nombre}`)
   }
 
   /**
@@ -56,7 +56,9 @@ export class Mascota {
     if (Number.isInteger(Number(edad))) this.edad = edad
   }
 
-
+getId () {
+  return this.#id
+}
 
   //dame información, importante poner las comillas laterales ``//
   /**

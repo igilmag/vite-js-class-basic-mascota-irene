@@ -1,6 +1,6 @@
-import { Mascota } from './helpers/Mascota'
-import formRaw from './templates/form-mascotas.html?raw'
 import { v4 as generarCodigo } from 'uuid'
+import { Mascota, Perro } from './helpers'
+import formRaw from './templates/form-mascotas.html?raw'
 
 /**
  * punto de entrada de la aplicación
@@ -26,19 +26,34 @@ function manipulacionFormulario(element) {
     const tipo = element.tipo.value.trim()
     const genero = element.genero.value
     const edad = Number(element.edad.value)
+let p1 = null
 
-    // instancias la clase y cargas datos
-    const p1 = new Mascota({ 
-      type: tipo, 
-      name: nombre, 
-      microchip, 
-      id: generarCodigo(),
-      age: edad, 
-      sexo: genero
-     })
+    if (element['tipo-mascota'].value === 'mascota'){  
+      // instancias la clase y cargas datos
+      p1 = new Mascota({
+        type: tipo,
+        name: nombre,
+        microchip,
+        id: generarCodigo(),
+        age: edad,
+        sexo: genero
+      })
+    } else {
+      p1 = new Perro({
+        type: tipo,
+        name: nombre,
+        microchip,
+        id: generarCodigo(),
+        age: edad,
+        sexo: genero
+    }, {raza: 'caniche', peso: 5,})
+    }
+
     // mostrar datos
+    if(p1)
     element.querySelector('#content').innerHTML = p1.getData()
   })
+
   element.querySelector('#rango-edad')
     .addEventListener('input', (e) => {
       const input = e.target
@@ -46,6 +61,18 @@ function manipulacionFormulario(element) {
     })
   // const mascota = new Mascota()
   // rootElement.innerHTML += mascota.getData()
+
+  element['tipo-mascota'].addEventListener('change', e => {
+    const select = e.target
+    const divElement = element.querySelector('#otros-campos')
+    if (select.value === 'perro') {
+      // muestro campos
+      divElement.classList.remove('oculto')
+    } else {
+      // oculto campos
+      divElement.classList.add('oculto')
+    }
+  })
 }
 
 //en el import se pone ?raw porque sino no aparece.

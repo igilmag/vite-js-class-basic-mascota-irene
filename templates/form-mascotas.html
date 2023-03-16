@@ -1,28 +1,51 @@
 <form id="myForm" class="grid">
   <fieldset>
-    <div class="field">
-      <label for="nombre">Nombre</label>
-      <input placeholder="escribe el nombre" type="text" name="nombre" id="nombre">
-      <ins>Este campo es obligatorio</ins>
-    </div>
-    <div class="field">
-      <label for="tipo">Tipo</label>
-      <input type="text" name="tipo" id="tipo">
-    </div>
-    <div class="field">
-      <label for="microchip">Microchip</label>
-      <input placeholder="000000" required type="text" name="microchip" id="microchip">
+    <article>
+      <select name="tipo-mascota">
+        <option value="mascota">Mascota</option>
+        <option value="perro">Perro</option>
+      </select>
+      <div id="otros-campos" class="grid oculto">
+        <div class="field">
+          <label for="raza">Raza</label>
+        <input placeholder="pastor alemán" type="text" name="raza" id="raza">
+        <ins>Este campo es obligatorio</ins>
+        </div>
+        <div class="field">
+          <label for="alimentacion">Alimentacion</label>
+        <input placeholder="alimento seco" type="text" name="alimentacion" id="alimentacion">
+       
+        </div>
+        <div class="field">
+          <label for="peso">Peso</label>
+        <input placeholder="kgs" type="number" name="peso" id="peso">
+        </div>
+
+      </div>
+    </article>
+    <div class="grid">
+      <div class="field">
+        <label for="nombre">Nombre</label>
+        <input placeholder="escribe el nombre" type="text" name="nombre" id="nombre">
+        <ins>Este campo es obligatorio</ins>
+      </div>
+      <div class="field">
+        <label for="microchip">Microchip</label>
+        <input placeholder="000000" required type="text" name="microchip" id="microchip">
+      </div>
     </div>
     <div class="field">
       <label for="tipo">Tipo</label>
       <input placeholder="Cánido" type="text" name="tipo" id="tipo">
     </div>
-    <div class="field">
-      <label for="edad">Edad</label>
-      <input disabled type="number" min= "0" max="300" name="edad" id="edad">
-      <input type="range" id="rango-edad" max="300" value="0">
+    <div class="grid">
+      <div class="field">
+        <label for="edad">Edad</label>
+        <input disabled type="number" min= "0" max="300" name="edad" id="edad">
+        <input type="range" id="rango-edad" max="300" value="0">
+      </div>
+      <div class="field">
     </div>
-    <div class="field">
       <fieldset>
         <legend>Sexo</legend>
         <label>
